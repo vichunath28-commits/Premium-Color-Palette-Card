@@ -1,6 +1,6 @@
 /*
     ============================================================================
-    AweddenStudio - Colour Details Artwork Generator
+    Color Palette Card Creator - Colour Details Artwork Generator
     Version: 1.2
     Target: Adobe Illustrator ExtendScript (JSX)
     ============================================================================
@@ -39,7 +39,7 @@
         return;
     }
 
-    var SCRIPT_NAME = "AweddenStudio";
+    var SCRIPT_NAME = "Color Palette Card Creator";
     var SCRIPT_VERSION = "1.1";
     var OUTPUT_W = 1080;
     var OUTPUT_H = 1350;
@@ -2164,12 +2164,12 @@
     }
 
     function generateArtwork(doc, colorsData, fontObj, typo, createdNewDoc, layoutStyle) {
-        var layer = ensureLayer(doc, "AweddenStudio Output");
+        var layer = ensureLayer(doc, "Color Palette Card Creator Output");
         layer.locked = false;
         layer.visible = true;
 
         var root = layer.groupItems.add();
-        root.name = "AweddenStudio_Colour_Details_Artwork";
+        root.name = "Color Palette Card Creator_Colour_Details_Artwork";
 
         var origin = getPlacementOrigin(doc, createdNewDoc);
         var x0 = origin[0];
@@ -2390,6 +2390,15 @@
         szRow.add("statictext", undefined, "RGB size");
         var rgbSizeEt = szRow.add("edittext", undefined, "16"); rgbSizeEt.characters = 4;
 
+        var brandPanel = dlg.add("panel");
+        brandPanel.alignment = ["fill", "top"];
+        brandPanel.margins = [12, 8, 12, 8];
+
+        var brandGroup = brandPanel.add("group");
+        brandGroup.alignment = ["fill", "center"];
+        brandGroup.alignChildren = ["center", "center"];
+        brandGroup.add("statictext", undefined, "Scripted by AweddenStudio");
+
         var bottom = dlg.add("group");
         bottom.alignment = "right";
         bottom.add("button", undefined, "Cancel", { name: "cancel" });
@@ -2498,7 +2507,7 @@
             "Artwork generated successfully.\n\n" +
             "Cards: " + ui.colors.length + "\n" +
             "Group: " + artwork.name + "\n" +
-            "Layer: AweddenStudio Output"
+            "Layer: Color Palette Card Creator Output"
         );
 
     } catch (err) {
